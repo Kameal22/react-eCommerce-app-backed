@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const session = require("express-session");
-const { required } = require("nodemon/lib/config");
 mongoose.connect("mongodb://localhost:27017/eCommerceDatabase");
 
 const laptopSchema = new mongoose.Schema({
@@ -21,13 +19,17 @@ const laptopSchema = new mongoose.Schema({
     required: true,
   },
   screen: {
-    type: String,
+    type: Number,
     required: true,
   },
   price: {
     type: Number,
     required: true,
     min: 0,
+  },
+  img: {
+    type: String,
+    required: true,
   },
   category: {
     type: String,
@@ -53,7 +55,7 @@ const phoneSchema = new mongoose.Schema({
     required: true,
   },
   screen: {
-    type: String,
+    type: Number,
     required: true,
   },
   memory: {
@@ -64,6 +66,10 @@ const phoneSchema = new mongoose.Schema({
     type: Number,
     required: true,
     min: 0,
+  },
+  img: {
+    type: String,
+    required: true,
   },
   category: {
     type: String,
@@ -97,6 +103,10 @@ const consoleSchema = new mongoose.Schema({
     required: true,
     min: 0,
   },
+  img: {
+    type: String,
+    required: true,
+  },
   category: {
     type: String,
     lowercase: true,
@@ -125,13 +135,17 @@ const procesorSchema = new mongoose.Schema({
     required: true,
   },
   cache: {
-    type: String,
+    type: Number,
     required: true,
   },
   price: {
     type: Number,
     required: true,
     min: 0,
+  },
+  img: {
+    type: String,
+    required: true,
   },
   category: {
     type: String,
@@ -169,6 +183,10 @@ const tvSchema = new mongoose.Schema({
     required: true,
     min: 0,
   },
+  img: {
+    type: String,
+    required: true,
+  },
   category: {
     type: String,
     lowercase: true,
@@ -204,6 +222,10 @@ const headphonesSchema = new mongoose.Schema({
     type: Number,
     required: true,
     min: 0,
+  },
+  img: {
+    type: String,
+    required: true,
   },
   category: {
     type: String,
