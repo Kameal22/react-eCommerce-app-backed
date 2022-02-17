@@ -10,30 +10,6 @@ app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: true }));
 app.use(session({ secret: "secret" }));
 
-// const productSchema = new mongoose.Schema({
-//   name: {
-//     type: String,
-//     required: true,
-//   },
-//   price: {
-//     type: Number,
-//     required: true,
-//     min: 0,
-//   },
-//   category: {
-//     type: String,
-//     lowercase: true,
-//     enum: [
-//       "computers",
-//       "smartphones",
-//       "gaming",
-//       "components",
-//       "tvs",
-//       "accesories",
-//     ],
-//   },
-// });
-
 // const userSchema = new mongoose.Schema({
 //   username: {
 //     type: String,
@@ -45,21 +21,29 @@ app.use(session({ secret: "secret" }));
 //   },
 // });
 
-// const Users = mongoose.model("users", userSchema);
-// const Products = mongoose.model("products", productSchema);
+const Laptops = require("./models/laptops");
+const Headphones = require("./models/headphones");
+const Consoles = require("./models/consoles");
+const Phones = require("./models/phones");
+const Processors = require("./models/processors");
+const Tvs = require("./models/tvs");
 
-app.get("/products", async (req, res) => {
-  if (req.session.user_id) {
-    const products = await Products.find({});
-    res.send(products);
-  } else {
-    res.send("please log in");
-  }
+// app.get("/products", async (req, res) => {
+//   if (req.session.user_id) {
+//     const products = await Products.find({});
+//     res.send(products);
+//   } else {
+//     res.send("please log in");
+//   }
+// });
+
+app.get("/", async (req, res) => {
+  res.send("HELLO");
 });
 
-app.get("/products", async (req, res) => {
-  const products = await Products.find({});
-  res.send(products);
+app.get("/laptops", async (req, res) => {
+  const laptops = await Laptops.find({});
+  res.send(laptops);
 });
 
 app.get("/products/:id", async (req, res) => {

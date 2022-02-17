@@ -1,14 +1,12 @@
-//db.getCollection('orders').deleteMany({})
-
 const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/eCommerceDatabase");
 
-const laptops = require("./product");
-const phones = require("./product");
-const consoles = require("./product");
-const processors = reuqire("./product");
-const tvs = require("./product");
-const headphones = require("./product");
+const Laptops = require("./models/laptops");
+const Headphones = require("./models/headphones");
+const Consoles = require("./models/consoles");
+const Phones = require("./models/phones");
+const Processors = require("./models/processors");
+const Tvs = require("./models/tvs");
 
 const seedLaptops = [
   {
@@ -728,4 +726,9 @@ const seedHeadphones = [
   },
 ];
 
-// laptops.insertMany(seedLaptops);
+Laptops.insertMany(seedLaptops);
+Phones.insertMany(seedPhones);
+Consoles.insertMany(seedConsoles);
+Processors.insertMany(seedProcesors);
+Tvs.insertMany(seedTvs);
+Headphones.insertMany(seedHeadphones);
