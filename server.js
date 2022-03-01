@@ -54,18 +54,48 @@ app.get("/phones", async (req, res) => {
 
 app.get("/processors", async (req, res) => {
   const processors = await Processors.find({});
-  res.send(Processors);
+  res.send(processors);
 });
 
 app.get("/tvs", async (req, res) => {
   const tvs = await Tvs.find({});
-  res.send(Tvs);
+  res.send(tvs);
 });
 
-app.get("/products/:id", async (req, res) => {
+app.get("/laptops/:id", async (req, res) => {
   const { id } = req.params;
-  const product = await Products.findById(id);
-  res.send(product);
+  const laptop = await Laptops.findById(id);
+  res.send(laptop);
+});
+
+app.get("/consoles/:id", async (req, res) => {
+  const { id } = req.params;
+  const console = await Consoles.findById(id);
+  res.send(console);
+});
+
+app.get("/headphones/:id", async (req, res) => {
+  const { id } = req.params;
+  const headphone = await Headphones.findById(id);
+  res.send(headphone);
+});
+
+app.get("/phones/:id", async (req, res) => {
+  const { id } = req.params;
+  const phone = await Phones.findById(id);
+  res.send(phone);
+});
+
+app.get("/processors/:id", async (req, res) => {
+  const { id } = req.params;
+  const processor = await Processors.findById(id);
+  res.send(processor);
+});
+
+app.get("/tvs/:id", async (req, res) => {
+  const { id } = req.params;
+  const tv = await Tvs.findById(id);
+  res.send(tv);
 });
 
 app.post("/products", async (req, res) => {
