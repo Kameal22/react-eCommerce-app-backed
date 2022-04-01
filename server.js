@@ -8,7 +8,7 @@ mongoose.connect("mongodb://localhost:27017/eCommerceDatabase");
 app.use(cors());
 app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: true }));
-app.use(session({ secret: "secret" }));
+app.use(session({ secret: "secret", resave: true, saveUninitialized: true }));
 
 const Laptops = require("./models/laptops");
 const Headphones = require("./models/headphones");
@@ -31,6 +31,20 @@ app.get("/secret", async (req, res) => {
 });
 
 // THIS ABOVE IS ROUTE ONLY FOR LOGGED IN USERS
+
+app.get("/everything", async (req, res) => {
+  const everything = [];
+
+  const laptops = await Laptops.find({});
+  const headphones = await Headphones.find({});
+  const consoles = await Consoles.find({});
+  const phones = await Phones.find({});
+  const processors = await Phones.find({});
+  const tvs = await Phones.find({});
+
+  everything.push(laptops, headphones, consoles, phones, processors, tvs);
+  res.send(everything);
+});
 
 app.get("/laptops", async (req, res) => {
   const laptops = await Laptops.find({});
@@ -132,7 +146,7 @@ app.post("/login", async (req, res) => {
       loggedIn = true;
     }
   } catch (e) {
-    res.status(404).send("Invalid product");
+    res.status(404).send("Invalid data");
   }
 });
 

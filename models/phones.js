@@ -26,6 +26,10 @@ const phoneSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  scdImg: {
+    type: String,
+    required: true,
+  },
   category: {
     type: String,
     lowercase: true,
