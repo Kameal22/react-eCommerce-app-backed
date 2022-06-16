@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const session = require("express-session");
+
 mongoose.connect(
   "mongodb+srv://kameal22:Eagles4675@cluster0.wnq6l.mongodb.net/eCommerceDatabase?retryWrites=true&w=majority"
 );
@@ -82,6 +83,8 @@ app.get("/laptops/:id", async (req, res) => {
   const { id } = req.params;
   const laptop = await Laptops.findById(id);
   res.send(laptop);
+
+  console.log(laptop);
 });
 
 app.get("/consoles/:id", async (req, res) => {
@@ -181,6 +184,8 @@ app.get("/users:id", async (req, res) => {
 //   res.send(product);
 // });
 
-app.listen(process.env.PORT, () => {
-  console.log("Listening on port 3000");
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
 });
