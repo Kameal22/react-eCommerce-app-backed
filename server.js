@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
-const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const session = require("express-session");
-mongoose.connect("mongodb://localhost:27017/eCommerceDatabase");
+mongoose.connect(
+  "mongodb+srv://kameal22:Eagles4675@cluster0.wnq6l.mongodb.net/eCommerceDatabase?retryWrites=true&w=majority"
+);
 app.use(cors());
 app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: true }));
@@ -180,6 +181,6 @@ app.get("/users:id", async (req, res) => {
 //   res.send(product);
 // });
 
-app.listen(process.env.PORT || 3001, () => {
+app.listen(process.env.PORT, () => {
   console.log("Listening on port 3000");
 });
