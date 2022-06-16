@@ -9,6 +9,7 @@ app.use(cors());
 app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: true }));
 app.use(session({ secret: "secret", resave: true, saveUninitialized: true }));
+require("dotenv").config();
 
 const Laptops = require("./models/laptops");
 const Headphones = require("./models/headphones");
@@ -179,12 +180,6 @@ app.get("/users:id", async (req, res) => {
 //   res.send(product);
 // });
 
-const arr = [1, 2, 3];
-
-app.get("/test", (req, res) => {
-  res.send(`${arr} is the data from pseudo api`);
-});
-
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log("Listening on port 3000");
 });
