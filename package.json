@@ -2,12 +2,13 @@
   "name": "express-server",
   "version": "1.0.0",
   "engines": {
-    "node": "14.x"
+    "node": "14.8.0"
   },
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [],
   "author": "",
